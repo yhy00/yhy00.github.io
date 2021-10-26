@@ -1,0 +1,31 @@
+* {
+    max-width: 1440px;
+    min-width: 640px;
+}
+
+body h1.h1_title {
+    font-size: 50px;
+    color: rgb(126, 229, 243);
+    margin-left: 160px;
+}
+
+body h1 {
+    font-size: 50px;
+    color: rgb(126, 229, 243);
+    margin-left: 80px;
+}
+
+body div li.title {
+    font-size: 28px;
+    color: rgb(217, 157, 224);
+}
+
+body div {
+    padding: 20px;
+}
+
+body div li {
+    font-size: 20px;
+    color: rgb(114, 89, 114);
+    margin-top: 10px;
+}
