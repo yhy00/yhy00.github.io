@@ -1,0 +1,24 @@
+* {
+    max-width: 1440px;
+    min-width: 640px;
+}
+
+body h1 {
+    font-size: 84px;
+    color: rgb(126, 229, 243);
+}
+
+body div li.title {
+    font-size: 58px;
+    color: rgb(217, 157, 224);
+}
+
+body div {
+    padding: 40px;
+}
+
+body div li {
+    font-size: 42px;
+    color: rgb(114, 89, 114);
+    margin-top: 10px;
+}
