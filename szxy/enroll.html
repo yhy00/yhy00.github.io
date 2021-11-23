@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <script src="js/Bmob-2.2.5.min.js">
+    </script>
+    <link rel="stylesheet" href="css/bd.css">
+    <title>Document</title>
+    <style>
+        input[type="submit"] {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        Bmob.initialize("c22f64c57a666f9d", "222333");
+        Bmob.debug(true);
+
+        function register() {
+
+            let params = {
+                username: document.getElementById("name").value,
+                password: document.getElementById("pwd").value,
+
+            }
+            Bmob.User.register(params).then(res => {
+                alert("注册成功！");
+                location.href = "login.html"
+            }).catch(err => {
+                alert("err.error");
+            });
+        }
+    </script>
+
+
+
+</head>
+
+<body>
+    <header class="head">
+        <ul>
+            <li><img src="img/logo.png" alt="logo"></li>
+        </ul>
+    </header>
+
+    <li>姓名：<input type="text" id="name" required="required" autofocus="autofocus" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal;width: 100%;  "></li>
+    <li>密码：<input type="password" id="pwd" required="required" style="overflow: hidden; overflow-wrap: break-word; resize: horizontal;width: 100%;  "></li>
+    <button onclick="register()">注册</button>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+body {
+    margin: 0 auto;
+    min-width: 320px;
+    max-width: 640px;
+    background: #fff;
+    font-size: 14px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.5;
+    color: #666;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.head {
+    height: 45px;
+}
+
+.head ul li {
+    float: left;
+    height: 45px;
+    background-color: #ffffff;
+    color: #fff;
+}
+
+body ul li {
+    float: left;
+    font-size: 20px;
+    color: brown;
+    padding: 20px;
+}
+
+.head ul li:nth-child(1) {
+    width: 100%;
+    size: 45px;
+}
+
+.head ul li:nth-child(1) img {
+    height: 60px;
+}
