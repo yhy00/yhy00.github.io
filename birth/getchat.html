@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0">
+    <script src="js/Bmob-2.2.5.min.js">
+    </script>
+
+    <title>心理成员聊天</title>
+    <style>
+        input[type="submit"] {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        Bmob.initialize("c22f64c57a666f9d", "222333");
+        Bmob.debug(true);
+
+        function render(data) {
+
+            var _dom = document.createElement('div');
+            _dom.setAttribute('class', 'item ' + state[data.state]);
+            _dom.innerHTML = tmp.replace(/(\{.+?\})/g, function($1) {
+                return data[$1.slice(1, $1.length - 1)]
+            });
+            document.getElementById('shareSateList').appendChild(_dom);
+
+        }
+
+        function get() {
+            const query = Bmob.Query('chat');
+            // query.equalTo("sno", "==", '123');
+            // query.select("word");
+            i = 0;
+
+
+            query.find().then(res => {
+                query.order("createdAt");
+
+                while (res[i] != null) {
+                    query.get(res[i++].objectId).then(res => {
+                        // var spanTag = document.getElementById("info");
+                        // spanTag.innerHTML = res.word;
+                        var sno = res.sno;
+                        var question = res.word;
+                    }).catch(err => {
+                        console.log(err)
+                    })
+                }
+
+            });
+
+        }
+    </script>
+
+
+
+</head>
+
+<body>
+    <header class="head">
+        <ul>
+            <li><img src="img/logo.png" alt="logo"></li>
+        </ul>
+    </header>
+
+
+    <p>聊 天</p>
+    <!-- <span><button  id="info" onclick="get()"></button></span> -->
+    var oShareStateList = document.getElementById('shareSateList'), tmp = [
+    <div class="itemInfo">,
+        <p class="name">{name}</p>,
+        <p class="phone">{phone}</p><br/>,
+
+
+    </div>
+    <div class="mark"></div>].join(''), state = ['sharing', 'unJoin', 'sharingEnd'];
+
+    <!-- <div>
+        <p>学号：{sno}</p>
+        <p>问题：{question}</p>
+    </div> -->
+    <!-- <div><input type="text" class="screen" required="required"></div> -->
+    <!-- <div><input type="text" class="chat" id="word" required="required" autofocus="autofocus"></div> -->
+    <!-- <span><textarea rows="15" cols="7" wrap="no/off" id="info" onclick="get()"></textarea></span> -->
+    <button onclick="get()">发 送</button>
+
+    <style type="text/css">
+        body {
+            margin: 0 auto;
+            min-width: 320px;
+            max-width: 640px;
+            background: #fff;
+            font-size: 14px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.5;
+            color: #666;
+            background-color: rgb(224, 220, 220);
+            list-style: none;
+        }
+        
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        body ul li {
+            font-size: 20px;
+        }
+        
+        .head ul li:nth-child(1) img {
+            width: 45%;
+        }
+        
+        body div input.screen {
+            height: 300px;
+            width: 80%;
+            position: relative;
+            left: 10%;
+            margin-top: 10px;
+            border-radius: 5px;
+            background-color: rgb(241, 233, 248);
+        }
+        
+        body div input.chat {
+            height: 30px;
+            width: 80%;
+            position: relative;
+            left: 10%;
+            margin-top: 10px;
+            border-radius: 5px;
+            background-color: rgb(241, 233, 248);
+        }
+        
+        body button {
+            height: 38px;
+            width: 80%;
+            margin-top: 20px;
+            position: relative;
+            left: 11%;
+            border-radius: 17px;
+            background-color: rgb(195, 129, 248);
+        }
+        
+        body p {
+            font-size: 28px;
+            text-align: center;
+        }
+    </style>
+
+</body>
+
+
+
+</html>

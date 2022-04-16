@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" onclick="setitems()" value="存储">
+    <input type="button" onclick="getitems()" value="取值">
+</body>
+<script>
+    function setitems() {
+        var user = {};
+        user.name = "adam";
+        user.age = 25;
+        user.home = "china";
+        localStorage.setItem('userinfo', JSON, Stringify(user));
+    }
+
+    function getitems() {
+        var data = JSON.parse(localStorage.getItem('userinfo'));
+        console.log("name:" + data.name + '\r age: ' + data.age + "\r home:" + data.home);
+    }
+</script>
+
+</html>
