@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="525心理网">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="applicable-device" content="mobile">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="wap-font-scale" content="no">
+    <meta name="Cache-control" content="no-tranform" />
+    <title>向心理专家提问,在线帮您解决心理困惑</title>
+    <meta name="keywords" content="向心理专家提问,找心理专家咨询,心理咨询" />
+    <meta name="description" content="525心理网提供专业的在线心理咨询服务，向心理专家提问，无需注册、10分钟内免费解答，在线帮您解决心理困惑！525心理网，中国心理咨询第一品牌！" />
+    <link rel="shortcut icon" href="https://img.psy525.cn/favicon.ico" type="image/x-icon" />
+    <link rel="Bookmark" href="https://img.psy525.cn/favicon.ico" type="image/x-icon" />
+    <!--[if lt IE 9 ]><script src="/res/js/lib/html5shiv.min.js"></script><script src="/res/js/lib/respond.min.js"></script><![endif]-->
+    <script src="//g.alicdn.com/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+    <script src="//g.alicdn.com/sd/smartCaptcha/0.0.4/index.js"></script>
+    <script src="//g.alicdn.com/sd/quizCaptcha/0.0.1/index.js"></script>
+    <link rel="stylesheet" href="https://res.psy525.cn/app/res/css_new/css.css?v=298128">
+    <link rel="stylesheet" href="https://res.psy525.cn/app/res/css_new/base.css?v=298128">
+    <link rel="stylesheet" href="https://res.psy525.cn/app/res/css_new/module/asktab.css?v=298128">
+    <link rel="stylesheet" href="https://res.psy525.cn/app/res/css_new/module/askform.css?v=298128">
+    <link rel="stylesheet" href="https://res.psy525.cn/app/res/css_new/bz/yuyueserver.css?v=298128">
+    <link rel="stylesheet" href="https://res.psy525.cn/app/res/css_new/pulgin/sms/sms.css?v=298128">
+    <link rel="stylesheet" href="https://res.psy525.cn/app/res/css_new/lib/jquery.autosize.css?v=298128">
+    <script src="js/Bmob-2.2.5.min.js">
+    </script>
+    <script>
+        Bmob.initialize("c22f64c57a666f9d", "222333");
+        Bmob.debug(true);
+
+
+
+        function on() {
+            Bmob.User.login(document.getElementById("mobile").value, document.getElementById("password").value).then(res => {
+                const query = Bmob.Query('question');
+                query.set("name", document.getElementById("clt_Title").value)
+                query.set("question", document.getElementById("clt_Ans").value)
+                query.save().then(res => {
+                    alert("提交成功！");
+                }).catch(err => {
+                    alert(err.error);
+                })
+            }).catch(err => {
+                alert(err.error)
+            });
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="bar"><a href="/" class="back"><i class="bg"></i></a>
+        <h2>快速咨询</h2><br class="clear" /></div>
+    <div id="headeline"></div>
+
+    <div id="ask-top">
+        <div class="pu"><a href="" class="on">心理问答</a><a href="">预约专家</a><br class="clear" /></div>
+    </div>
+    <div id="ask-form">
+
+        <p class="tit"><span class="q">描述您的问题</span><em class="f30">请勿在内容中泄漏您的个人隐私信息</em><br class="clear" /></p>
+        <div class="c-a">
+
+            <p class="ask-in"><input id="clt_Title" name="clt_Title" maxlength="50" type="text" placeholder="写标题（一句话概述您的问题）" /></p>
+            <p class="ask-in fbd"><textarea id="clt_Ans" name="clt_Ans" cols="20" rows="2" placeholder="写咨询内容，同时希望获得怎样的帮助？"></textarea></p>
+        </div>
+
+        <p class="tit" style="padding-top:1em"><span class="q">设置账户</span><em class="f30">用户保密,仅用于登录查看解答</em><br class="clear" /></p>
+        <div class="c-a">
+            <div class="ask-p" id="regform">
+                <span><input type="text" id="mobile" name="mobile" placeholder="输入学号" /></span>
+
+                <span class="item"><input type="password" name="dynpwd" id="dynpwd" placeholder="输入密码" /><br class="clear" /></span>
+            </div>
+        </div>
+        <div class="ncc">
+            <div id="dynsendverify"></div>
+        </div>
+
+        <p class="ask-in synch"><input type="checkbox" id="clt_public" name="clt_public" /><label for="clt_public">勾选同步到求助贴（可获多位专家解答）<i></i></label></p><br />
+        <p class="ask-in" style="padding:10px 0px 50px 0px"><input id="btn_SaveAsk" type="button" value="提交问题" class="btn" onclick="on()" /><input type="hidden" id="parm" value="6_0_0" /><br class="clear" /></p>
+    </div><br class="clear" /><br /><br />
+
+
+
+
+    <script src="//g.alicdn.com/sd/nvc/1.1.112/guide.js?t=2021111722"></script>
+    <script src="https://res.psy525.cn/app/res/js_new/js.js?v=298128"></script>
+    <script src="https://res.psy525.cn/app/res/js_new/pulgin/sms/sms.js?v=298128"></script>
+    <script src="https://res.psy525.cn/app/res/js_new/bz/yuyueserver.js?v=298128"></script>
+    <script src="https://res.psy525.cn/app/res/js_new/lib/jquery.autosize-min.js?v=298128"></script>
+    <script src="https://res.psy525.cn/app/res/js_new/module/askform.js?v=298128"></script>
+
+
+
+    <style type="text/css">
+        html {
+            background: #eee;
+        }
+    </style>
+</body>
+
+</html>
