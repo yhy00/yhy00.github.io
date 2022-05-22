@@ -62,13 +62,13 @@
         <div id="content">
             <div class="page" id="page1">
                 page1
-                <img src="https://dimg04.c-ctrip.com/images/300p0f0000007eqxf6DAD_C_228_132.jpg" alt="" />
+                <img src="img/1.jpg" alt="" /> alt="" />
             </div>
             <div class="page" id="page2">
-                <img src="https://dimg06.c-ctrip.com/images/350d0p000000fekw944EE_R_228_132_Q90.jpg" alt="" /> page2
+                page2
             </div>
             <div class="page" id="page3">
-                <img src="https://dimg04.c-ctrip.com/images/300v0o000000fftlb25BA_C_228_132.jpg" alt="" /> page3
+                page3
                 <button class="back">back</button>
             </div>
         </div>
@@ -105,6 +105,14 @@
                 }
                 $('#page' + index).css('height', '0px')
                 $('#page' + (index + 1)).css('height', itemHeight + 'px')
+            }
+            //上一页
+            if (moveY > 0) {
+                if (index == 3) {
+                    return false;
+                }
+                $('#page' + index).css('height', '0px')
+                $('#page' + (index - 1)).css('height', itemHeight + 'px')
             }
         }
 
