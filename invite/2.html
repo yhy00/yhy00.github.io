@@ -40,22 +40,16 @@
         
         #page1 {
             height: 100%;
+            /* background-image: url('img/bg.png'); */
+            background: #f00
         }
         
         #page2 {
-            height: 100%;
+            background: #0f0
         }
         
         #page3 {
-            height: 100%;
-        }
-        
-        #page4 {
-            height: 100%;
-        }
-        
-        #page5 {
-            height: 100%;
+            background: #00f
         }
         /* img {
         width: auto;
@@ -64,28 +58,27 @@
     </style>
 </head>
 
-<!-- z-index: -1; -->
-
 <body>
     <div id="wraper">
         <div id="content">
             <div class="page" id="page1">
-                <img id="content1" style="position: absolute;  width: 100%;  " src="https://cdn3.u.mgd5.com/c/utmx/qhrj/images/5cc6922becb65e100c7f6af6.gif" alt="">
-                <img style="width: 100%; position: absolute; " src="img/1.jpg" alt="" />
+                <img style="  width: 100%; position: absolute; " src="https://cdn3.u.mgd5.com/c/utmx/qhrj/images/5cc6922becb65e100c7f6af6.gif" alt="">
+                <img style="width: 100%;  " src="img/1.jpg" alt="" />
+                <!-- <img src="img/bg.png" alt=""> -->
             </div>
             <div class="page" id="page2">
-                <img id="content1" style="width: 100%;  position: absolute; " src="img/4.png" alt="" />
+                <img style="width: 100%;   " src="img/4.png" alt="" />
             </div>
             <div class="page" id="page3">
-                <img style="width: 100%;  position: absolute; " src="img/6.png" alt="" />
+                <img style="width: 100%;   " src="img/6.png" alt="" />
                 <button class="back">back</button>
             </div>
             <div class="page" id="page4">
-                <img style="width: 100%;  position: absolute; " src="img/7.png" alt="" />
+                <img style="width: 100%;   " src="img/7.png" alt="" />
                 <button class="back">back</button>
             </div>
             <div class="page" id="page5">
-                <img style="width: 100%; position: absolute; " src="img/5.png" alt="" />
+                <img style="width: 100%;  " src="img/5.png" alt="" />
                 <button class="back">back</button>
             </div>
         </div>
@@ -95,50 +88,47 @@
         var page1 = document.getElementById('page1'), //滑动item
             page2 = document.getElementById('page2'),
             page3 = document.getElementById('page3'),
-            page3 = document.getElementById('page4'),
-            page3 = document.getElementById('page5'),
             wraper = document.getElementById('wraper'),
-            content = document.getElementById('content'), //滑动容器
-            // content1 = document.getElementById('content1'); //滑动容器
-            var itemHeight = '100%'; //滑动item高度         
+            content = document.getElementById('content'); //滑动容器
+        var itemHeight = wraper.offsetHeight; //滑动item高度         
         var index = 0; //滑动计数
         var moveY, //滑动距离
             endY, //滑动停止的Y坐标
             startY; //滑动开始的Y坐标
-        content.style.height = (itemHeight * 3) + 'px'
-            // 触摸开始
+        // content.style.height = (itemHeight * 3) + 'px'
+        // 触摸开始
         function boxTouchStart(e) {
             var touch = e.touches[0];
             startY = touch.pageY;
+            // startY = e.touches[0].clientY - nowY;
+            // deltaX = e.touches[0].clientX - nowX;
+            // deltaY = e.touches[0].clientY - nowY;
         }
 
         // 触摸移动
         function boxTouchMove(e) {
-            console.log(e)
             var touch = e.touches[0];
-            moveY = touch.pageY - startY;
+            // moveY = touch.pageY - startY;
+            moveY = e.touches[0].clientY - deltaY;
             index = Number(e.target.id.split('page')[1])
+
+            // nowX = e.touches[0].clientX - deltaX;
+            // nowY = e.touches[0].clientY - deltaY;
+            // img.style.left = nowX + "px";
+            // img.style.top = nowY + "px";
 
             //下一页
             if (moveY < 0) {
-                if (index == 5) {
+                if (index == 3) {
                     return false;
                 }
                 $('#page' + index).css('height', '0px')
                 $('#page' + (index + 1)).css('height', itemHeight + 'px')
             }
-            //上一页
-            if (moveY > 0) {
-                if (index == 1) {
-                    return false;
-                }
-                $('#page' + index).css('height', '0px')
-                $('#page' + (index - 1)).css('height', itemHeight + 'px')
-            }
         }
 
         $('.back').click(function() {
-            $('#page5').css('height', '0px')
+            $('#page3').css('height', '0px')
             $('#page1').css('height', itemHeight + 'px')
         })
         content.addEventListener('touchstart', boxTouchStart, false)
