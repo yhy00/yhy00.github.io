@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=1.0">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <title>音乐学院邀请函</title>
+    <!-- <img src="" alt=""> -->
+    <!-- <audio src="bgm.mp3" id="aud" autoplay="autoplay" controls="controls" preload="auto "></audio> -->
+    <audio id="music" src="bgm.mp3" loop autoplay></audio>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .loading-div {
+            width: 100vh;
+            height: 100vh;
+            background-color: #fff;
+            display: table-cell;
+            vertical-align: middle;
+            color: #555;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .loading-div::before {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .container {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .container-block {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loading-div">
+        <img src="jiazai.gif" style="width: 100%;" />
+    </div>
+    <div class="container">
+
+
+        <!-- <img src="img/on.png" onClick="play()" style="width: 100px; position: absolute; " alt="user"> -->
+        <div class="container-block d1 "> <img style="position: absolute; width: 100%; " src="img/yinfu.gif" alt=" ">
+            <!-- <img style="position: absolute; right: 30px;top: 30px; width: 100px;   " src="img/tubiao4.png" alt=" "> -->
+            <img style="width: 100%; " src="img/-1.png " alt=" " /> </div>
+        <div class="container-block d2 "> <img style="width: 100%; " src="img/111.png " alt=" " /> </div>
+        <div class="container-block d3"> <img style="width: 100%;  " src="img/22.png" alt="" /> </div>
+        <div class="container-block d4"> <img style="width: 100%;  " src="img/33.png" alt="" /> </div>
+        <div class="container-block d5"> <img style="width: 100%;  " src="img/44.png" alt="" /> </div>
+
+
+        <!-- <div class="container-block d6"> <img id="content1" src="img/4.png" alt="" /> </div> -->
+    </div>
+
+
+</body>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    //注释部分是设置2秒的定时延迟，timeout结束后加载网页
+    setTimeout(() => {
+        $(".loading-div").hide();
+        $('body').css('overflow-y', 'scroll');
+    }, 2000);
+    //这是根据js判断，页面加载完毕就显示
+    // document.onreadystatechange = function() {
+    //     if (document.readyState == "complete") {
+    //         $(".loading-div").hide();
+    //         $('body').css('overflow', 'scroll');
+    //     }
+    // }
+</script>
+<script>
+    var pageNumber = 0; //当前页码
+    var scrollNumber = 0; //滚动距离
+    var touchstart = 0; //开始滑动y坐标
+    var touchend = 0; //停止滑动y坐标
+    var allpage = 5; //页面数
+    var pageHeight = $('.d1')[0].clientHeight; //单个page高度
+
+
+    //手指接触屏幕
+    $('.container').on('touchstart', function(e) {
+        touchstart = e.originalEvent.touches[0].pageY;
+        $(".container").css({
+            "overflow-y": "hidden"
+        });
+        play()
+    })
+
+    //手指停止屏幕
+    $('.container').on('touchend', function(e) {
+        touchend = e.originalEvent.changedTouches[0].pageY;
+        console.log((touchstart - touchend));
+        if (touchstart > touchend) {
+            if ((touchstart - touchend) > 10) {
+                if (pageNumber >= allpage - 1) {
+                    pageNumber = allpage - 1;
+                    return false;
+                }
+                $(".container").css({
+                    "overflow-y": "scroll"
+                });
+                pageNumber += 1;
+                if (pageNumber == "6") {
+                    return false;
+                }
+                $(".container").animate({
+                    scrollTop: pageHeight * pageNumber
+                }, 1000, function() {
+                    console.log(123123);
+                });
+            }
+        } else {
+            if ((touchend - touchstart) > 10) {
+                if (pageNumber <= 0) {
+                    pageNumber = 0;
+                    return false;
+                }
+                $(".container").css({
+                    "overflow-y": "scroll"
+                });
+                pageNumber -= 1;
+                if (pageNumber == "-1") {
+                    return false;
+                }
+                $(".container").animate({
+                    scrollTop: pageHeight * pageNumber
+                }, 1000);
+            }
+        }
+
+    });
+</script>
+
+</html>
